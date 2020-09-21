@@ -4310,3 +4310,24 @@ ol {
 		padding-right: 15px;
 	}
 }
+
+@media only screen and (max-width: 479px) {
+	#logo-wide{
+		display: none;
+	}
+
+	#logo-narrow{
+		display: inline;
+	}
+}
+
+@media only screen and (min-width: 479px) {
+	#logo-wide{
+		display: inline;	
+	}
+
+	#logo-narrow{
+		display: none;
+		margin-left: 60px;
+	}
+}
