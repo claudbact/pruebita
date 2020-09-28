@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/prueba.css" type="text/css">
+   
+
+    
+    
+</head>
+<body>
+    
+    <div class="main">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Buscar objeto ...">
+          <div class="input-group-append">
+            <button class="btn btn-secondary" type="button">
+              <i class="fa fa-search"><img  src="./img/kindpng_110727.png" width="15" height="15"></i>
+            </button>
+          </div>
+        </div>
+        <form>
+            <div class="form-group">
+                <br>
+                <label for="exampleFormControlTextarea1">Detalle de Solicitud</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+            
+
+              <p><input type="checkbox"> Seleccionar todo </p>
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col"> </th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Handle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input type="checkbox"></td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  
+                  </tr>
+                </tbody>
+              </table>
+              <div class="form-group">
+                <br>
+                <label for="exampleFormControlTextarea1">Comentario</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+              <button type="button" id="rechazar" class="btn btn-secondary"onclick="myfunction2()";>Rechazar</button>
+              <button type="button" class="btn btn-primary"id="abrir" onclick="abrir_1()";>Aceptar</button>
+            
+              <div id="miModal" class="modal">
+                <div class="flex" id="flex">
+                    <div class="contenido-modal">
+                        
+
+                        <div class="modal-body" align="center">
+                          
+                            <span class="close" id="close">&times;</span>
+                            <br>
+                            <br>
+                            <h4 >¿Estas seguro de que</h4>
+                            <h4 id="cambio" >deseas aceptar la </h4>
+                            <h4>solicitud de donación?</h4>
+                            <br>
+                            <br>
+                          <button type="button" id="rechazar" class="btn btn-secondary" onclick="myfunction()";>Rechazar </button>
+                        <button type="button" class="btn btn-primary" onclick="myfunction3()">Aceptar</button>
+                        </div>
+                       
+                           
+                       
+                    </div>
+                </div>
+            </div>
+
+            <div id="miModal2" class="modal">
+                <div class="flex" id="flex">
+                    <div class="contenido-modal">
+                        
+
+                        <div class="modal-body" align="center">
+                          
+                            <span class="close" id="close2">&times;</span>
+                            <br>
+                            <br>
+                            <h4 >Se ha enviado </h4>
+                            <h4 >la respuesta</h4>
+                            <h4>al departamento</h4>
+                            <br>
+                            <br>
+                         
+                        </div>
+                       
+                           
+                       
+                    </div>
+                </div>
+            </div>
+            <div id="miModal3" class="modal">
+                <div class="flex" id="flex">
+                    <div class="contenido-modal">
+                        
+
+                        <div class="modal-body" align="center">
+                          
+                            <div id="ocultar">
+                              
+                            <img src="./img/loader.gif">
+                            <br>
+                            <h4>Generando documento</h4>
+                          </div>
+                          <div id="ocultar_icono"align="center" >
+
+                            <img  src="./img/enviar.gif" width="250px" height="200px">
+                            <br>
+                            <div id="boton_1">
+                            <button type="button" class="btn btn-primary" onclick="ventana()";>Enviar</button>
+                          </div>
+                          </div>
+                         
+                        </div>
+                       
+                           
+                       
+                    </div>
+                </div>
+            </div>
+            <div id="miModal4" class="modal">
+              <div class="flex" id="flex">
+                  <div class="contenido-modal">
+                      
+
+                      <div class="modal-body" align="center">
+                        
+                       <span class="close" id="close4" onclick="cerrar_final()";>&times;</span>
+                          <br>
+                          <h4>Envio exitoso</h4>
+                          <br>
+                          <img src="./img/affection.png"width="150px" height="150px">
+                  
+                        </div>
+                       
+                      </div>
+                     
+                         
+                     
+                  </div>
+              </div>
+          </div>
+           
+
+           
+        </form>
+        
+      </div>
+      <script src="./js/evento.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    
+   
+</body>
+</html>
