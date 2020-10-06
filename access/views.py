@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from flask import Blueprint, render_tçemplate, session, request, redirect
+from flask import Blueprint, render_template, session, request, redirect
 from datetime import datetime
 from main.filters import if_session_active_go_home, if_session_not_active_go_login
 
