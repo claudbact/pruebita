@@ -14,7 +14,7 @@ def registro():
         
     }
     return render_template(
-        '/usuario/inicio.html',
+        '/ulima/usuario.html',
         locals=locals # acá seteamos una variable en nuestro template, en el tempalte tiene que coincider con el nombre locals, yy locals es undiccionario que en una de sus lavest tiene 
     ), 200
 
