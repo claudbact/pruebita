@@ -64,9 +64,12 @@ def login_access():
     if password == get_password_by_id(user):
         if rol == 1:
             if user[0] == '1' or user[0]=='2':
-                rolUsuario = "alumno" 
+                return redirect('/inicio') 
+                #usuario
             else:
-                rolUsuario = "docente"
+                
+                return redirect('/inicio')
+                 #profesor
         elif rol == 2:
             rolUsuario = "jefe" 
         elif rol == 3:

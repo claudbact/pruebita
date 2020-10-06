@@ -44,7 +44,7 @@ $(".login-panel").click(function(){
         confirmButtonText: 'OK'
       }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = "/static/templates/acceso/login_sgop.html";
+            window.location.href = "/login";
         }
       })
 
