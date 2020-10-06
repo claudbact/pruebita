@@ -1,6 +1,7 @@
 # !/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+# 2. creacion de modelos 
 from sqlalchemy import Column, Integer, String
 from main.database import Base
 
@@ -9,7 +10,10 @@ class Country(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
 
-class Carrer(Base):
-    __tablename__ = 'carrers'
+class Usuario(Base):
+    __tablename__ = 'usuario'
     id = Column(Integer, primary_key=True)
-    name = Column(String)
+    cod_usuario = Column(String)
+    password = Column(String)
+    correo_electronico = Column(String)
+    rol = Column(Integer)
