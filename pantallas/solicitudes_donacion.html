@@ -13,14 +13,14 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="/static/assets/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="/static/assets/css/themify-icons.css" type="text/css">
-    <link rel="stylesheet" href="/static/assets/css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="/static/assets/css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="/static/assets/css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="/static/assets/css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="/static/assets/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/themify-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/static/assets/css/style.css" type="text/css">
 </head>
 
@@ -32,6 +32,8 @@
 
     <!-- Header Section Begin -->
     <header class="header-section">
+        
+        
         <div class="container">
             <div class="inner-header">
                 <div class="row">                 
@@ -39,26 +41,36 @@
                         <div class="logo">
                             <a href="./index.html">                               
                                 <h3>
-                                    <img id="logo-wide" src="/static/assets/img/Universidad_de_Lima_logo_2.png" alt="Ulima" height = "62px">
+                                    <img id="logo-wide" src="img/Universidad_de_Lima_logo_2.png" alt="Ulima" height = "62px">
                                     <b>SISTEMA DE GESTIÓN DE OBJETOS PERDIDOS</b>
                                 </h3>
-                                <img id="logo-narrow" src="/static/assets/img/Universidad_de_Lima_logo_2.png" alt="Ulima" height = "62px">
+                                <img id="logo-narrow" src="img/Universidad_de_Lima_logo_2.png" alt="Ulima" height = "62px">
                             </a>
                         </div>
                     </div>
+                    
                     <div class="col-lg-2 text-right col-md-2">
                         <ul class="nav-right">
-                            <li><a class="login-panel text-black-50" ><i class="fa fa-user"></i> Logout</a></li> 
-                       </ul>
+                            <li class="cart-icon"><a href="#">
+                                    <i class="icon_bag_alt"></i>
+                                    <span>3</span>                               
+                            </li>
+
+                            <li><a href="login_sgop.html" class="login-panel text-black-50"><i class="fa fa-user"></i> Logout</a></li> 
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
         <div class="nav-item">
             <div class="container">
+                
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li><a href="./static/templates/inicio.html">Objetos</a></li>
+                        <li><a href="./inicio.html">OBJETOS</a></li>
+                        <li><a href="./inicio.html">REGISTRO OBJETOS</a></li>
+                        <li><a href="./verificar_objeto.html">SOLICITUDES USUARIO</a></li>
+                        <li><a href="./solicitudes_donacion.html">SOLICITUDES DONACION</a></li>
                     </ul>
                 </nav>
                 <div id="mobile-menu-wrap"></div>
@@ -75,42 +87,40 @@
                     <div class="filter-widget">
                         <h4 class="fw-title">Categorías</h4>
                         <ul class="filter-catagories">
+                            <li><a href="#">Académico</a></li>
+                            <li><a href="#">Documento</a></li>
+                            <li><a href="#">Personal</a></li>
                             <li><a href="#">Tecnológico</a></li>
-                            <li><a href="#">Documentos</a></li>
-                            <li><a href="#">Accesorios</a></li>
                         </ul>
                     </div>
                     <div class="filter-widget">
                         <h4 class="fw-title">Lugar</h4>
                         <div class="fw-brand-check">
-                            <div class="bc-item">
-                                <label for="bc-calvin">
-                                    A
-                                    <input type="checkbox" id="bc-calvin">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="bc-item">
-                                <label for="bc-diesel">
-                                    B
-                                    <input type="checkbox" id="bc-diesel">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="bc-item">
-                                <label for="bc-polo">
-                                    C
-                                    <input type="checkbox" id="bc-polo">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="bc-item">
-                                <label for="bc-tommy">
-                                    D
-                                    <input type="checkbox" id="bc-tommy">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
+                            <select name="Lugar">
+                                <option value="1">Todos</option>
+                                <option value="2">A</option>
+                                <option value="3">B</option>
+                                <option value="4">C</option>
+                                <option value="5">CH</option>
+                                <option value="6">D</option>
+                                <option value="7">E</option>
+                                <option value="8">F</option>
+                                <option value="9">G</option>
+                                <option value="10">H</option>
+                                <option value="11">LL</option>
+                                <option value="12">M</option>
+                                <option value="13">N</option>
+                                <option value="14">O</option>
+                                <option value="15">PARQUE CENTRAL</option>
+                                <option value="16">Q</option>
+                                <option value="17">R</option>
+                                <option value="18">S</option>
+                                <option value="19">TA</option>
+                                <option value="20">TB</option>
+                                <option value="21">V</option>
+                                <option value="22">W</option>
+                                <option value="23">ZUM</option>
+                            </select>
                         </div>
                     </div>
                     <div class="filter-widget">
@@ -128,40 +138,31 @@
                         <br><br><br>
                         <a href="#" class="filter-btn">Buscar</a>
                     </div>
-                 
+                    
+                    
                 </div>
                 <div class="col-lg-9 order-1 order-lg-2">
-                    <div class="product-show-option">
-                        <div class="row">
-                            <div class="col-lg-7 col-md-7">
-                                <div class="advanced-search">
-                                    <form action="#" class="input-group">
-                                        <input type="text" placeholder="¿Qué estás buscando?">
-                                        <button type="button"><i class="ti-search"></i></button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="product-list">
                         <div class="row">
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="/static/assets/img/products/descarga (3).png" alt="">
+                                        <img src="img/products/descarga (3).png" alt="">
+                                        
                                         <div class="icon">
                                             <br>
                                         </div>
                                         <ul>
                                             <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a class="solicitud-obj">+ Solicitar</a></li>
+                                            <li class="quick-view"><a href="detalle_sol_donacion.html">+ Verificar</a></li>
                                             <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                                         </ul>
                                     </div>
                                     <div class="pi-text">
-                                        <div class="catagory-name">Tecnológico</div>
+                                        <div class="catagory-name">Académico</div>
                                         <a href="#">
-                                            <h5>Cargador Huawei</h5>
+                                            <h5>50 LÁPICES</h5>
                                         </a>
                                         <div class="product-price">
                                             
@@ -174,20 +175,20 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="/static/assets/img/products/descarga (3).png" alt="">
+                                        <img src="img/products/descarga (3).png" alt="">
                                         <div class="icon">
                                             <br>
                                         </div>
                                         <ul>
                                             <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a class="solicitud-obj">+ Solicitar</a></li>
+                                            <li class="quick-view"><a href="#">+ Verificar</a></li>
                                             <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                                         </ul>
                                     </div>
                                     <div class="pi-text">
-                                        <div class="catagory-name">Vestimenta</div>
+                                        <div class="catagory-name">Tecnológico</div>
                                         <a href="#">
-                                            <h5>Casaca Adidas</h5>
+                                            <h5>20 USB</h5>
                                         </a>
                                         <div class="product-price">
                                             
@@ -200,20 +201,45 @@
                                 <div class="product-item">
                                     <div class="pi-pic">
                                         
-                                        <img src="/static/assets/img/products/descarga (3).png" alt="">
+                                        <img src="img/products/descarga (3).png" alt="">
                                         <div class="icon">
                                             <br>
                                         </div>
                                         <ul>
                                             <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a class="solicitud-obj">+ Solicitar</a></li>
+                                            <li class="quick-view"><a href="#">+ Verificar</a></li>
+                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="pi-text">
+                                        <div class="catagory-name">Personal</div>
+                                        <a href="#">
+                                            <h5>10 CASACAS</h5>
+                                        </a>
+                                        <div class="product-price">
+                                            
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="product-item">
+                                    <div class="pi-pic">
+                                        <img src="img/products/descarga (3).png" alt="">
+                                        <div class="icon">
+                                            <br>
+                                        </div>
+                                        <ul>
+                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                            <li class="quick-view"><a href="#">+ Verificar</a></li>
                                             <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                                         </ul>
                                     </div>
                                     <div class="pi-text">
                                         <div class="catagory-name">Tecnológico</div>
                                         <a href="#">
-                                            <h5>USB Kingston 16 GB</h5>
+                                            <h5>40 USB</h5>
                                         </a>
                                         <div class="product-price">
                                             
@@ -225,45 +251,20 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="/static/assets/img/products/descarga (3).png" alt="">
+                                        <img src="img/products/descarga (3).png" alt="">
                                         <div class="icon">
                                             <br>
                                         </div>
                                         <ul>
                                             <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a class="solicitud-obj">+ Solicitar</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Utensilios</div>
-                                        <a href="#">
-                                            <h5>Tomatodo Adidas</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="/static/assets/img/products/descarga (3).png" alt="">
-                                        <div class="icon">
-                                            <br>
-                                        </div> 
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a class="solicitud-obj">+ Solicitar</a></li>
+                                            <li class="quick-view"><a href="#">+ Verificar</a></li>
                                             <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                                         </ul>
                                     </div>
                                     <div class="pi-text">
                                         <div class="catagory-name">Tecnológico</div>
                                         <a href="#">
-                                            <h5>Adaptador Iphone</h5>
+                                            <h5>5 CELULARES</h5>
                                         </a>
                                         <div class="product-price">
                                             
@@ -275,111 +276,35 @@
                             <div class="col-lg-4 col-sm-6">
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        <img src="/static/assets/img/products/descarga (3).png" alt="">
+                                        <img src="img/products/descarga (3).png" alt="">
                                         <div class="icon">
                                             <br>
                                         </div>
                                         <ul>
                                             <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a class="solicitud-obj">+ Solicitar</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Utensilios</div>
-                                        <a href="#">
-                                            <h5>Tomatodo celeste</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="/static/assets/img/products/descarga (3).png" alt="">
-
-                                        <div class="icon">
-                                            <br>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a class="solicitud-obj">+ Solicitar</a></li>
+                                            <li class="quick-view"><a href="#">+ Verificar</a></li>
                                             <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                                         </ul>
                                     </div>
                                     <div class="pi-text">
                                         <div class="catagory-name">Tecnológico</div>
                                         <a href="#">
-                                            <h5>Audífonos Skullcandy</h5>
+                                            <h5>10 AUDÍFONOS</h5>
                                         </a>
                                         <div class="product-price">
-                                            
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="/static/assets/img/products/descarga (3).png" alt="">
-                                        <div class="icon">
-                                            <br>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a class="solicitud-obj">+ Solicitar</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Tecnológico</div>
-                                        <a href="#">
-                                            <h5>Cargador Samsung</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="/static/assets/img/products/descarga (3).png" alt="">
-                                        <div class="icon">
-                                            <br>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a class="solicitud-obj">+ Solicitar</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Tecnológico</div>
-                                        <a href="#">
-                                            <h5>USB Kignston 4 GB</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            
                                             <span></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> 
                 </div>
             </div>
         </div>
     </section>
     <!-- Product Shop Section End -->
+
 
     <!-- Footer Section Begin -->
     <footer class="footer-section">
@@ -429,7 +354,7 @@
                         <h5>Centro de ayuda</h5>
                         <p>Preguntas frecuentes</p>
                         <p>Contacto</p>
-
+                        
                     </div>
                 </div>
             </div>
@@ -439,22 +364,20 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="copyright-text">
-                            
+                           
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <script src="/static/assets/js/jquery-3.3.1.min.js"></script>
-    <script src="/static/assets/js/bootstrap.min.js"></script>
-    <script src="/static/assets/js/jquery-ui.min.js"></script>
-    <script src="/static/assets/js/jquery.countdown.min.js"></script>
-    <script src="/static/assets/js/jquery.nice-select.min.js"></script>
-    <script src="/static/assets/js/jquery.zoom.min.js"></script>
-    <script src="/static/assets/js/jquery.dd.min.js"></script>
-    <script src="/static/assets/js/jquery.slicknav.js"></script>
-    <script src="/static/assets/js/owl.carousel.min.js"></script>
-    <script src="/static/assets/js/main.js"></script>
-    <script src="/static/assets/plugins/sweetalert2.all.min.js"></script>
-    <script src="/static/assets/js/modales-jq.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.countdown.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery.zoom.min.js"></script>
+    <script src="js/jquery.dd.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

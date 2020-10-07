@@ -20,6 +20,7 @@ $(".solicitud-obj").click(function(){
                 confirmButtonText: 'Enviar'
               }).then((result) => {
                 if (result.isConfirmed) {
+                  $('#obj1').submit(); //agregado 
                   Swal.fire(
                     '¡Listo!',
                     'La solicitud ha sido enviada con éxito.',
@@ -35,7 +36,7 @@ $(".solicitud-obj").click(function(){
 });
 
 /*****************Modal para cierre de sesión*******************/
-$(".login-panel").click(function(){
+/*$(".login-panel").click(function(){
     Swal.fire({
         title: '¿Está seguro de que desea cerrar sesión?',
         showCancelButton: true,
@@ -44,11 +45,11 @@ $(".login-panel").click(function(){
         confirmButtonText: 'OK'
       }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = "/login";
+            window.location.href = "/logout";
         }
       })
 
-});
+});*/
 
   
   

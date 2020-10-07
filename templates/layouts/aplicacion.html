@@ -49,23 +49,60 @@
         </div>
    
     </header>
-    
-<br>
-{% if (session['status'] == 'active') %}
-  Usuario Logeado: <b>{{session['user']}}</b>
-  <br>
-  Hora de Acceso: <b>{{session['time']}}</b>
-  <br>
-  Rol: <b>{{session['rol']}}</b>
-  <br>
-  <!--<a href="/login">Cerrar Sesión</a>-->
-{% else %}  
-  <a href="/logout">Cerrar Sesión</a>
-{% endif %}
-    <!-- Header End -->
+    {% if (session['status'] == 'active') %}
+    {% if (session['rol'] == '1') %}
 
-    <br>
-    {% block content %}{% endblock %}
+        <a href="/login">Cerrar Sesión</a>
+    {% else %}
+        {% if (session['rol'] == '2') %}
+            
+            <li><a href="./registro.html">REGISTRO OBJETOS</a></li>
+            <li><a href="./verificar_objeto.html">SOLICITUDES USUARIO</a></li>
+            <li><a href="./verificar_objeto.html">SOLICITUD DE DONACIÓN</a></li>
+           
+        {% else %}
+            {% if (session['rol'] == '3') %}
+              
+                <li><a href="./registro.html">REGISTRO OBJETOS</a></li>
+                <li><a href="./verificar_objeto.html">SOLICITUDES USUARIO</a></li>
+               
+            {% else %}
+                {% if (session['rol'] == '4') %}
+                  
+                    <li><a href="./registro.html">REGISTRO OBJETOS</a></li>
+                   
+                {% else %}
+                   
+                    <li><a href="./registro.html">SOLICITUD DE DONACIÓN</a></li>
+                    
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    {% endif %}
+{% else %}  
+<a href="/logout">Ingresar</a>
+{% endif %}
+    <div class="nav-item">
+        <div class="container">
+           
+            <header class="header-section">
+    
+                <div class="nav-item">
+                    <div class="container">
+                        
+                        <nav class="nav-menu mobile-menu">
+                            <ul>
+                                <li><a href="./inicio.html">OBJETOS</a></li>
+
+                            </ul>
+                        </nav>
+                        <div id="mobile-menu-wrap"></div>
+                    </div>
+                </div>
+            </header>
+        </div>
+    </div>
+   
   
     <footer class="footer-section">
         <div class="container">
@@ -126,9 +163,7 @@
                         <div class="copyright-text">
                             
     </footer>
-    <!-- Footer Section End -->
 
-    <!-- Js Plugins -->
     <script src="/assets/js/jquery-3.3.1.min.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/jquery-ui.min.js"></script>

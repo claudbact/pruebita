@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # 2. creacion de modelos 
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String,DateTime,ForeignKey
 from main.database import Base
 
 class Country(Base):
@@ -17,3 +17,23 @@ class Usuario(Base):
     password = Column(String)
     correo_electronico = Column(String)
     rol = Column(Integer)
+
+class Dpto(Base):
+    __tablename__ = 'dpto'
+    cod_dpto=Column(Integer, primary_key=True)
+    dpto_name= Column(String)
+    email=Column(String)
+    telefono=Column(Integer)
+    anexo=Column(Integer)
+    edificio=Column(String)
+    piso=Column(Integer)
+class Donativo(Base):
+    __tablename__ = 'DONATIVO'
+    cod_donativo=Column(Integer, primary_key=True)
+    cod_dpto=Column(Integer,ForeignKey('dpto.cod_dpto'))
+    fecha_envio=Column(DateTime)
+    descripcion=Column(String)
+    cantidad= Column(Integer)
+    email=Column(String)
+    telefono=Column(Integer)
+
