@@ -1,5 +1,5 @@
 /*****************Modal para cierre solicitud de objeto usuario*******************/
-$(".solicitud-obj").click(function(){
+$(".objeto5").click(function(){
     Swal.fire({
       title: "Ingrese las características del objeto",
       input: 'textarea',
@@ -51,7 +51,3 @@ $(".solicitud-obj").click(function(){
 
 });*/
 
-  
-  
-  
-  

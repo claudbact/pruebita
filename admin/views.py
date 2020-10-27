@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import json
+import json,datetime
 from flask import Blueprint, render_template, session, request, redirect
-from main.models import Country
+from main.models import Country,Objeto
 from main.database import engine
 from sqlalchemy import select
 
@@ -28,3 +28,40 @@ def country_list():
     return json.dumps(resp), status
 
 
+
+@view.route('/objeto/list')
+def objeto_list():
+    resp = None
+    status = 200
+    try:
+        conn = engine.connect()
+        stmt = select([Objeto])
+        rs = conn.execute(stmt)
+        lista = []
+        for r in conn.execute(stmt):
+            print(r.fecha_hallado)
+            row = {
+            'id': r.id,
+            'cod_objeto':r.cod_objeto,
+            'nom_objeto':r.nom_objeto,
+            'categoria':r.categoria,
+            'estado':r.estado,
+            'marca':r.marca,
+            'fecha_hallado':str(r.fecha_hallado),
+            'fecha_dev':str(r.fecha_dev),
+            'lugar':r.lugar,
+            'nro_anaquel':r.nro_anaquel,
+            'caract_esp':r.caract_esp,
+            'cod_usu_entrega':r.cod_usu_entrega
+            }
+            lista.append(row) 
+        #resp = [dict(r) for r in conn.execute(stmt)]
+        resp=lista
+    except Exception as e:
+        resp = [
+            'Se ha producido un error en listar los paises',
+            str(e)
+        ]
+        status = 500
+
+    return json.dumps(resp),status

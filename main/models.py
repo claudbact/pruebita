@@ -37,3 +37,18 @@ class Donativo(Base):
     email=Column(String)
     telefono=Column(Integer)
 
+class Objeto(Base):
+    __tablename__='objeto'
+    id = Column(Integer, primary_key=True)
+    cod_objeto= Column(Integer)
+    id_usuario = Column(Integer)
+    nom_objeto = Column(String)
+    categoria = Column(String)
+    marca = Column(String)
+    estado = Column(String)
+    fecha_hallado=Column(DateTime)
+    fecha_dev=Column(DateTime)
+    lugar=Column(String)
+    nro_anaquel=Column(Integer)
+    caract_esp=Column(String)
+    cod_usu_entrega=Column(Integer)

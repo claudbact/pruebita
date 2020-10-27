@@ -20,9 +20,9 @@ def if_session_not_active_go_login(param):
         def wrapper(*args, **kwargs):         
             if session.get('status') is not None:
                 if session.get('status') != 'active':
-                    return redirect('/login')
+                    return redirect('/inicio')
             else:
-                return redirect('/login')
+                return redirect('/inicio')
             return fn(*args, **kwargs)
         return wrapper
     return decorator

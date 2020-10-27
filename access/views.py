@@ -9,7 +9,7 @@ from main.test import get_password_by_id,get_rol_by_id
 
 view = Blueprint('access_bludprint', __name__)
 
-@view.route('/login', methods=['GET'])
+@view.route('/', methods=['GET'])
 @if_session_active_go_home()
 def login():
     locals={
@@ -20,7 +20,9 @@ def login():
         locals=locals
         ), 200
 
-@view.route('/login', methods=['POST'])
+
+
+@view.route('/', methods=['POST'])
 def login_access():
     user = request.form['user']
     password = request.form['password']
@@ -50,7 +52,7 @@ def login_access():
         session['time'] = datetime.now()
         session['rol'] = rol
         locals = {}
-        print(session)
+        print(session['rol'])
         '''return render_template(
             'layouts/aplication.html',
             locals=locals
@@ -62,7 +64,7 @@ def login_access():
         }
         print(session)
         return render_template(
-            'login_sgop.html',
+            'acceso/login_sgop.html',
             locals=locals
             ), 500
 
@@ -96,7 +98,7 @@ def logout():
     locals={
         'message': 'Su sesión ha sido destruida',
     }
-    return redirect('/login')
+    return redirect('/')
 '''
 @view.route('/', methods=['GET'])
 def home():
@@ -135,25 +137,16 @@ def home():
 
 
 '''
-@view.route('/', methods=['GET'])
-def home():
+
+#@view.route('/', methods=['GET'])
+'''def home():
     locals={ }
     return render_template(
         'home.html',
         locals=locals
-        ), 200
+        ), 200'''
 
-@view.route('/admin', methods=['GET'])
-@if_session_not_active_go_login(param='pepe')
-def admin():
-    locals={ 
-        'csss': ['assets/css/demo', 'assets/css/demo2'],
-        'jss': ['assets/js/lib', 'assets/js/demo'],
-    }
-    return render_template(
-        'admin.html',
-        locals=locals
-        ), 200
+
 @view.route('/cerrar',methods=['POST'])
 def cerrar():
     return redirect('/login')

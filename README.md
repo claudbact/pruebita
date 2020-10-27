@@ -23,7 +23,7 @@ Activar el ambiente virtual:
 
 <b>Windows</b>
     
-    $ \env\Scripts\activate.bat
+    $env\Scripts\activate.bat 
 
 Instalar las dependencias:
 

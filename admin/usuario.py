@@ -19,3 +19,13 @@ def registro():
     ), 200
 
 
+@view.route('/register', methods=['GET'])
+def register():    
+    locals = {
+        'message': '',
+        
+    }
+    return render_template(
+        'registro/registro_objeto.html',
+        locals=locals # acá seteamos una variable en nuestro template, en el tempalte tiene que coincider con el nombre locals, yy locals es undiccionario que en una de sus lavest tiene 
+    ), 200

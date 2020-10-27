@@ -17,11 +17,13 @@
     <link rel="stylesheet" href="/assets/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
     <link rel="stylesheet" href="/assets/plugins/sweetalert2.min.css" type="text/css">
-    {% block css %}
-    {% endblock %}
+    
+   
   </head>
-  <body>
-         
+  <body onload="myFunction()">
+    {% block css %}
+    <link rel="stylesheet" href="assets/css/modal.css" type="text/css">
+    {% endblock %}  
     <div id="preloder">
         <div class="loader"></div>
     </div>
@@ -46,7 +48,7 @@
                     <div class="col-lg-2 text-right col-md-2">
                         <ul class="nav-right">
                             
-                            <button type="button" class="btn btn-secondary" id="registrar_1" data-toggle="modal" data-target="#myModal">
+                            <button type="button" class="btn btn-secondary" id="registrar_1">
                                 Logout
                             </button>
 
@@ -71,27 +73,27 @@
                             <ul>
                                 {% if (session['status'] == 'active') %}
                                 {% if (session['rol'] == 1) %} <!--ALUMNO O PROF-->
-                                <li><a href="/inicio">OBJETOS</a></li>
+                                <li id="1"><a href="/inicio">OBJETOS</a></li>
                                 {% else %}
                                 {% if (session['rol'] == 2) %} <!--JEFE-->
                                 <li><a href="/inicio">OBJETOS</a></li>
-                                <li><a href="./registro.html">REGISTRO OBJETOS</a></li>
+                                <li id="2"><a href="/register">REGISTRO OBJETOS</a></li>
                                 <li><a href="./verificar_objeto.html">SOLICITUDES USUARIO</a></li>
                                 <li><a href="./verificar_objeto.html">SOLICITUD DE DONACIÓN</a></li>
                                 
                                 {% else %}
                                 {% if (session['rol'] == 3) %} <!---->
-                                <li><a href="/inicio">OBJETOS</a></li>
+                                <li id="3"><a href="/inicio">OBJETOS</a></li>
                                 <li><a href="./registro.html">REGISTRO OBJETOS</a></li>
                                 <li><a href="./verificar_objeto.html">SOLICITUDES USUARIO</a></li>
                                 
                                 {% else %}
                                 {% if (session['rol'] == 4) %}
-                                <li><a href="/inicio">OBJETOS</a></li>
+                                <li id="4"><a href="/inicio">OBJETOS</a></li>
                                 <li><a href="./registro.html">REGISTRO OBJETOS</a></li>
                                 
                                 {% else %}
-                                <li><a href="/inicio">OBJETOS</a></li>
+                                <li id="5"><a href="/inicio">OBJETOS</a></li>
                                 <li><a href="/registro">SOLICITUD DE DONACIÓN</a></li>
                                 
                                 {% endif %}
@@ -115,7 +117,8 @@
         
         <br>
         <br>
-        <div class="modal" id="myModal">
+        
+        <div class="modal" id="myModal1">
           <div class="modal-dialog">
             <div class="modal-content">
                 
@@ -123,7 +126,7 @@
                   
                   <div class="modal-body">
                     <h5 class="modal-title"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"onclick="miCerrar();">
                       <span aria-hidden="true">&times;</span>
                     </button>
                     <br>
@@ -140,6 +143,13 @@
             </div>
           </div>
         </div>
+        <script>
+            var cierra=document.getElementById("registrar_1");
+            var ventanita=document.getElementById("myModal1");
+            cierra.addEventListener("click", function(){
+                            ventanita.style.display = 'block';
+                            });
+        </script>
         
       </div>
 
@@ -216,243 +226,140 @@
                             </div>
                         </div>
                     </div>
-                    <div class="product-list">
-                        <div class="row">
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic" style="height: 3em;">
-                                        <img src="/static/assets/img/products/descarga (3).png" alt="">
-                                        <div class="icon">
-                                            <br>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a class="solicitud-obj" id="obj1">+ Solicitar</a></li> <!--agregado-->
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Tecnológico</div>
-                                        <a href="#">
-                                            <h5>Cargador Huawei</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            
-                                
-                                            <h6> </h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic" style="height: 3em;">
-                                        <img src="/static/assets/img/products/descarga (3).png" alt="">
-                                        <div class="icon">
-                                            <br>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a class="solicitud-obj">+ Solicitar</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Vestimenta</div>
-                                        <a href="#">
-                                            <h5>Casaca Adidas</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic" style="height: 3em;">
-                                        
-                                        <img src="/static/assets/img/products/descarga (3).png" alt="">
-                                        <div class="icon">
-                                            <br>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a class="solicitud-obj">+ Solicitar</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Tecnológico</div>
-                                        <a href="#">
-                                            <h5>USB Kingston 16 GB</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic" style="height: 3em;">
-                                        <img src="/static/assets/img/products/descarga (3).png" alt="">
-                                        <div class="icon">
-                                            <br>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a class="solicitud-obj">+ Solicitar</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Utensilios</div>
-                                        <a href="#">
-                                            <h5>Tomatodo Adidas</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic" style="height: 3em;">
-                                        <img src="assets/img/products/descarga (3).png" alt="">
-                                        <div class="icon">
-                                            <br>
-                                        </div> 
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a class="solicitud-obj">+ Solicitar</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Tecnológico</div>
-                                        <a href="#">
-                                            <h5>Adaptador Iphone</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic" style="height: 3em;">
-                                        <img src="/static/assets/img/products/descarga (3).png" alt="">
-                                        <div class="icon">
-                                            <br>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a class="solicitud-obj">+ Solicitar</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Utensilios</div>
-                                        <a href="#">
-                                            <h5>Tomatodo celeste</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic" style="height: 3em;">
-                                        <img src="/static/assets/img/products/descarga (3).png" alt="">
 
-                                        <div class="icon">
-                                            <br>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a class="solicitud-obj">+ Solicitar</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Tecnológico</div>
-                                        <a href="#">
-                                            <h5>Audífonos Skullcandy</h5>
-                                        </a>
-                                        <div class="product-price">
+                    <div class="product-list" id="lista">
+                        {% if (session['status'] == 'active') %}
+                        {% if (session['rol'] == 1) %} 
+                        <div class="row" id="items" name="1">
+                                        
+                                        
+                        </div>
+                        {% else %}
+                        {% if (session['rol'] == 2 or session['rol'] == 3 or session['rol'] == 4) %} 
+                        <div class="row" id="items2"></div>
+                                        
+                                        
+                        </div>
+                        <style>
+                            #miModal
+                            {
+                                display: none;
+                            }
+                        </style>
+                        <div id="miModal" class="modal" >
+                            <div class="flex" id="flex">
+                                <div class="contenido-modal">
+                                    <div class="modal-body" >
+                                        <span class="close" id="close">&times;</span>
+                                        <br>
+                                               <h5>Código Objeto</h5>
+                                               
+                                                <p id="uno"></p>
+                                                <hr>
+                                                <h5>Marca</h5>
+                                                <p id="dos"></p>
+                                                <hr>
+                                                <h5>Estado</h5>
+                                                <p id="tres"></p>
+                                                <hr>
+                                                <h5>Fecha de Devolución</h5>
+                                              
+                                                <p id="cuatro"></p>
+                                                <hr>
+                                                <h5>Caracteristicas Especiales</h5>
+                                               
+                                                <p id="cinco"></p>
+                                                <hr>
+                                                <h5>Número de Anaquel</h5>
+                                               
+                                                <p id="seis"></p>
+                                                <hr>
+                                                <h5>Código de usuario que entrego</h5>
+                                              
+                                                <p id="siete"></p>
                                             
-                                            <span></span>
-                                        </div>
+                                          </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic" style="height: 3em;">
-                                        <img src="/static/assets/img/products/descarga (3).png" alt="">
-                                        <div class="icon">
-                                            <br>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a class="solicitud-obj">+ Solicitar</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Tecnológico</div>
-                                        <a href="#">
-                                            <h5>Cargador Samsung</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic" style="height: 3em;">
-                                        <img src="/static/assets/img/products/descarga (3).png" alt="">
-                                        <div class="icon">
-                                            <br>
-                                        </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a class="solicitud-obj">+ Solicitar</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        <div class="catagory-name">Tecnológico</div>
-                                        <a href="#">
-                                            <h5>USB Kignston 4 GB</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        </div>
+                        
+                        {% else %}
+                        {% if (session['rol'] == 5) %} 
+                        <div class="row" id="items"></div>
+                                        
+                                        
+                        </div>
+                        
+                        {% else %}
+                        {% if (session['rol'] == 4) %}
+                        <div class="row" id="items2"></div>
+                                        
+                                        
+                        </div>
+                        {% else %}
+                        <div class="row" id="items2"></div>
+                                        
+                                        
+                        </div>
+                        
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+                        {% else %}
+                        <a href="/logout">Ingresar</a>
+                        {% endif %}
+                                    <!--<div class="row" id="items">
+                                        
+                                        
+                                    </div>-->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-  
+    
+       <!-- <div class="container-prueba">
+            <div class="section-prueba">
+                <button onclick="myFunction()">Copy Text</button>
+                <table class="table"> 
+                    <thead>
+                        <tr>
+                            <th>Objeto</th>
+                            <th>Categoria</th>
+
+                        </tr>
+                    </thead>
+                    <!--<tbody id="prueba-cuerpo">
+
+
+                    </tbody>
+
+                </table>
+
+
+
+            </div>
+
+
+
+
+        </div>-->
+
+
+        <!--<button onclick="myFunction()">Copy Text</button>-->
+
+        
+      
+
+       
+
+
+
+
+    
     <footer class="footer-section">
         <div class="container">
             <div class="row">
@@ -523,9 +430,248 @@
     <script src="/assets/js/jquery.slicknav.js"></script>
     <script src="/assets/js/owl.carousel.min.js"></script>
     <script src="/assets/js/main.js"></script>
+    <script>
+        console.log("se conecto aaaa");
+    
+        function myFunction()
+    {
+        console.log("Dentro de la funcion");
+        const xhttp = new XMLHttpRequest();
+        xhttp.open('GET','/objeto/list',true)
+        xhttp.send();
+        xhttp.onreadystatechange=function()
+        {
+            if(this.readyState==4&&this.status==200)
+            {
+                //console.log(this.responseText);
+    
+                let datos=JSON.parse(this.responseText)
+               
+               
+                //let res=document.querySelector('#prueba-cuerpo')
+               
+                //console.log(datos)
+                /*
+                for (let item of datos)
+                {
+                    
+                    res.innerHTML+= `
+                    <tr>
+                        <td>${item.nom_objeto}</td>	
+                        <td>${item.categoria}</td>	
+                    </tr>`
+    
+                    
+                }*/
+                /*for (let item of datos)
+                {
+                    
+                   
+                    res.innerHTML+= `
+                    <div class="col-lg-4 col-sm-6">
+                            <div class="product-item">
+                                <div class="pi-pic" style="height: 3em;">
+                                    <img src="/static/assets/img/products/descarga (3).png" alt="">
+                                    <div class="icon">
+                                        <br>
+                                    </div>
+                                    <ul>
+                                        <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                        <li class="quick-view"><a class="obj2" id="obj23">+ Solicitar</a></li> <!--agregado-->
+                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="pi-text">
+                                    <div class="catagory-name">${item.categoria}</div>
+                                    <a href="#">
+                                        <h5>${item.nom_objeto}</h5>
+                                        <p>Pabellon ${item.lugar}</p>
+                                        <p>${item.fecha_hallado}</p>
+                                        
+                                    </a>
+                                    <div class="product-price">
+                                        
+                            
+                                        <h6> </h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                   
+                
+                    `
+    
+                    
+                }*/
+                var variable= document.getElementById("lista");
+                var ventana=document.getElementById('miModal');
+                var a= variable.childNodes[1].id;
+                console.log(a);
+                if(a=="items")
+                {
+                    
+                    for (let item of datos)
+                    {
+                        
+                       
+                        let miNodo = document.createElement('div');
+                        
+                        miNodo.className='col-lg-4 col-sm-6';
+                        miNodo.classList.add('card');
+                        
+                    
+                        let miNodoCardBody = document.createElement('div');
+                        miNodoCardBody.classList.add('card-body');
+                        
+                        let miNodoTitle = document.createElement('h5');
+                        miNodoTitle.classList.add('card-title');
+                        miNodoTitle.textContent = item.nom_objeto;
+                        
+                    
+                        let miNodoCategoria= document.createElement('p');
+                        miNodoCategoria.classList.add('card-text');
+                        miNodoCategoria.textContent = item.categoria;
+
+                        let miNodolugar= document.createElement('p');
+                        miNodolugar.classList.add('card-text');
+                        miNodolugar.textContent = "Pabellón "+item.lugar;
+                        
+                        let miNodofecha= document.createElement('p');
+                        miNodofecha.classList.add('card-text');
+                        miNodofecha.textContent = item.fecha_hallado;
+
+                        let miNodoBoton = document.createElement('button');
+                        miNodoBoton.classList.add('btn', 'btn-success');
+                        miNodoBoton.textContent = 'SOLICITAR';
+                        
+                        //miNodoBoton.addEventListener('click',modal);
+                        // Insertamos
+                    
+                        miNodoCardBody.appendChild(miNodoTitle);
+                        miNodoCardBody.appendChild(miNodoCategoria);
+                        miNodoCardBody.appendChild(miNodolugar);
+                        miNodoCardBody.appendChild(miNodofecha);
+                        miNodoCardBody.appendChild(miNodoBoton);
+                        miNodo.appendChild(miNodoCardBody);
+
+                        document.getElementById("items").appendChild(miNodo);
+                        
+                    
+        
+                        
+                    }
+                }
+
+                else
+                {
+                    
+                    if(a=="items2")
+                    {
+                        
+                            for (let item of datos)
+                            {
+                                
+                                let miNodo = document.createElement('div');
+                              
+                                miNodo.className='col-lg-4 col-sm-6';
+                                miNodo.classList.add('card');
+                                
+                            
+                                let miNodoCardBody = document.createElement('div');
+                                miNodoCardBody.classList.add('card-body');
+                                
+                                let miNodoTitle = document.createElement('h5');
+                                miNodoTitle.classList.add('card-title');
+                                miNodoTitle.textContent = item.nom_objeto;
+                                
+                            
+                                let miNodoCategoria= document.createElement('p');
+                                miNodoCategoria.classList.add('card-text');
+                                miNodoCategoria.textContent = item.categoria;
+
+                                let miNodolugar= document.createElement('p');
+                                miNodolugar.classList.add('card-text');
+                                miNodolugar.textContent = "Pabellón"+item.lugar;
+
+                                let miNodofecha= document.createElement('p');
+                                miNodofecha.classList.add('card-text');
+                                miNodofecha.textContent = item.fecha_hallado;
+                            
+                                let miNodoBoton = document.createElement('button');
+                                miNodoBoton.classList.add('btn', 'btn-primary');
+                                miNodoBoton.textContent = '+ VER MAS';
+                                
+                                //miNodoBoton.addEventListener('click',modal);
+
+
+                                miNodoBoton.addEventListener("click",function() {
+                                    var a=item.cod_objeto;
+                                    var b=item.marca;
+                                    var c=item.estado;
+                                    var d=item.fecha_dev;
+                                    var e=item.caract_esp;
+                                    var f=item.nro_anaquel;
+                                    var g=item.cod_usu_entrega;
+                                    document.getElementById("uno").innerHTML=`<p>`+a+`</p>`;
+                                    document.getElementById("dos").innerHTML=`<p>`+b+`</p>`;
+                                    document.getElementById("tres").innerHTML=`<p>`+c+`</p>`;
+                                    document.getElementById("cuatro").innerHTML=`<p>`+d+`</p>`;
+                                    document.getElementById("cinco").innerHTML=`<p>`+e+`</p>`;
+                                    document.getElementById("seis").innerHTML=`<p>`+f+`</p>`;
+                                    document.getElementById("siete").innerHTML=`<p>`+g+`</p>`;
+                                    ventana.style.display="block";
+                                 
+                                });
+                                // Insertamos
+                            
+                                miNodoCardBody.appendChild(miNodoTitle);
+                                miNodoCardBody.appendChild(miNodoCategoria);
+                                miNodoCardBody.appendChild(miNodolugar);
+                                miNodoCardBody.appendChild(miNodofecha);
+                                miNodoCardBody.appendChild(miNodoBoton);
+                                miNodo.appendChild(miNodoCardBody);
+                                
+                                
+                                document.getElementById("items2").appendChild(miNodo);
+                                
+                                
+                            }
+                            //var ventana=document.getElementById('miModal');
+                            var cerrar=document.getElementById('close');
+                            
+                            function modal()
+                            {
+                                
+                                ventana.style.display="block";
+                            }
+                            
+                            cerrar.addEventListener('click', function(){
+                            ventana.style.display = 'none';
+                            });
+ 
+                    }
+                }
+                
+                
+                
+                
+             
+                
+               
+                
+            }
+
+            
+        }
+    }
+    
+    
+    
+    </script>
     <script src="/assets/js/modales-jq.js"></script>
     <script src="/assets/plugins/sweetalert2.all.min.js"></script>
-    
-    <!-- en este bloque se va incrustar lo que esté en block js en el otro template -->
+    <script src="/assets/plugins/sweetalert2.all.min.js"></script>
+
 </body>
+
 </html>

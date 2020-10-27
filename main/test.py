@@ -4,7 +4,7 @@
 # 3. querys
 from sqlalchemy.sql import select
 from main.database import engine
-from main.models import Country, Usuario
+from main.models import Country,Usuario,Objeto
 
 def countries_list(): # SELECT * FROM countries
     try:
@@ -54,5 +54,16 @@ def get_rol_by_id(id): # SELECT rol FROM usuario WHERE cod_usuario = :id
         rs = conn.execute(stmt)
         resp = [dict(r) for r in conn.execute(stmt)]
         return (resp[0]['rol'])
+    except Exception as e:
+        return (str(e)) 
+
+def objeto_list():
+    try:
+        conn=engine.connect()
+        stmt = select([Objeto]) 
+        rs = conn.execute(stmt)
+        resp = [dict(r) for r in conn.execute(stmt)]
+        return resp
+
     except Exception as e:
         return (str(e)) 
