@@ -84,13 +84,13 @@
                                 {% else %}
                                 {% if (session['rol'] == 3) %} <!---->
                                 <li id="3"><a href="/inicio">OBJETOS</a></li>
-                                <li><a href="./registro.html">REGISTRO OBJETOS</a></li>
+                                <li><a href="/register">REGISTRO OBJETOS</a></li>
                                 <li><a href="./verificar_objeto.html">SOLICITUDES USUARIO</a></li>
                                 
                                 {% else %}
                                 {% if (session['rol'] == 4) %}
                                 <li id="4"><a href="/inicio">OBJETOS</a></li>
-                                <li><a href="./registro.html">REGISTRO OBJETOS</a></li>
+                                <li><a href="/register">REGISTRO OBJETOS</a></li>
                                 
                                 {% else %}
                                 <li id="5"><a href="/inicio">OBJETOS</a></li>
@@ -235,7 +235,7 @@
                                         
                         </div>
                         {% else %}
-                        {% if (session['rol'] == 2 or session['rol'] == 3 or session['rol'] == 4) %} 
+                        {% if (session['rol'] == 2 or session['rol'] == 3 or session['rol'] == 4 ) %} 
                         <div class="row" id="items2"></div>
                                         
                                         
@@ -286,24 +286,19 @@
                         
                         {% else %}
                         {% if (session['rol'] == 5) %} 
-                        <div class="row" id="items"></div>
-                                        
-                                        
-                        </div>
-                        
-                        {% else %}
-                        {% if (session['rol'] == 4) %}
-                        <div class="row" id="items2"></div>
-                                        
-                                        
-                        </div>
-                        {% else %}
                         <div class="row" id="items2"></div>
                                         
                                         
                         </div>
                         
-                        {% endif %}
+                        {% else %}
+                       
+                        <div class="row" id="items2"></div>
+                                        
+                                        
+                        </div>
+                        
+                       
                         {% endif %}
                         {% endif %}
                         {% endif %}
@@ -525,6 +520,7 @@
                         
                         let miNodoTitle = document.createElement('h5');
                         miNodoTitle.classList.add('card-title');
+                       
                         miNodoTitle.textContent = item.nom_objeto;
                         
                     

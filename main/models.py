@@ -41,7 +41,6 @@ class Objeto(Base):
     __tablename__='objeto'
     id = Column(Integer, primary_key=True)
     cod_objeto= Column(Integer)
-    id_usuario = Column(Integer)
     nom_objeto = Column(String)
     categoria = Column(String)
     marca = Column(String)
@@ -52,3 +51,5 @@ class Objeto(Base):
     nro_anaquel=Column(Integer)
     caract_esp=Column(String)
     cod_usu_entrega=Column(Integer)
+
+

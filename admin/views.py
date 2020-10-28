@@ -4,8 +4,9 @@
 import json,datetime
 from flask import Blueprint, render_template, session, request, redirect
 from main.models import Country,Objeto
-from main.database import engine
-from sqlalchemy import select
+from main.database import engine,session_db
+from sqlalchemy import select,insert
+from datetime import datetime
 
 #objeto que tiene la subaplicacion
 view = Blueprint('admin_bludprint', __name__)
@@ -65,3 +66,53 @@ def objeto_list():
         status = 500
 
     return json.dumps(resp),status
+
+@view.route('/objeto/agregar', methods=['POST'])
+def objeto_agregar():
+    codigo = request.form['cod_objeto']
+    nom_objeto=str(request.form['nom_objeto'])
+    categoria=str(request.form['categoria'])
+    marca=str(request.form['marca'])
+    estado=str(request.form['estado'])
+    fecha_hallado=request.form['fecha_hallado']
+    fecha_dev=request.form['fecha_dev']
+    lugar=str(request.form['lugar'])
+    nro_anaquel=request.form['nro_anaquel']
+    caract_esp=str(request.form['caract_esp'])
+    cod_usu_entrega=request.form['cod_usu_entrega']
+    print(cod_usu_entrega)
+    #conn = engine.connect()
+    status = 200
+    session = session_db()
+    stmt=Objeto(
+        cod_objeto=codigo,
+        nom_objeto=nom_objeto,
+        categoria=categoria,
+        marca=marca,
+        estado=estado,
+        fecha_hallado=fecha_hallado,
+        fecha_dev=fecha_dev,
+        lugar=lugar,
+        nro_anaquel=nro_anaquel,
+        caract_esp=caract_esp,
+        cod_usu_entrega=cod_usu_entrega)
+    session.add(stmt)
+    session.flush()
+    print('1 ++++++++++++++++++++++++')
+    session.commit()
+    print('2 ++++++++++++++++++++++++')
+    #users.insert().values({"name": "some name"})
+    
+    #conn.execute(stmt)
+    rpta = {
+      'tipo_mensaje' : 'success',
+      'mensaje' : [
+        'Se ha registrado los cambios en los items del subtítulo'
+      ]
+    }
+    
+    return  json.dumps(rpta),status
+
+    '''
+INSERT INTO OBJETO(cod_objeto, id_usuario,nom_objeto, categoria, marca, estado, fecha_hallado,fecha_dev, lugar, nro_anaquel, caract_esp, cod_usu_entrega)
+ VALUES(1, 5,'CARGADOR HUAWEI', 'TECNOLOGICO','HUAWEI', 'EN PROCESO', '10-04-2020', NULL, 'F', 1,'USB AZUL MARCA HUAWEI', NULL);'''
