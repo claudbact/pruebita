@@ -217,9 +217,9 @@
                                         <li><span>ESTADO:</span></li>
                                         <li><span>
                                             <select name="estado">
-                                                <option value="Almacenado">Almacenado</option>
-                                                <option value="Entregado">Entregado</option>
-                                                <option value="Donado">Donado</option>
+                                                <option value="ALMACENADO">Almacenado</option>
+                                                <option value="ENTREGADO">Entregado</option>
+                                                <option value="DONADO">Donado</option>
                                             </select>
                                         </span></li>
                                         <br>
@@ -237,7 +237,7 @@
                                         <li><span><textarea name="caract_esp"></textarea></span></li>
                                         <br>
                                         <li><span>COD USUARIO ENTREGA:</span></li>
-                                        <input type="submit" value="Ingresar">
+                                        <!--<input type="submit" value="Ingresar">-->
                                         <li><span><input type="text" name="cod_usu_entrega"></span></li>
                                     </ul>
                                 </div>
@@ -247,7 +247,42 @@
                                 </div>
                             </div>
                         
-                        
+                                        
+                            <div id="miModal" class="modal">
+                                <div class="flex" id="flex">
+                                    <div class="contenido-modal">
+                                        <div class="modal-body" align="center">
+                                            <span class="close" id="close">&times;</span>
+                                            <br>
+                                            <br>
+                                            <h4>¿Está seguro de que</h4>
+                                            <h4>desea registrar</h4>
+                                            <h4>el objeto?</h4>
+                                            <br>
+                                            <br>
+                                            <button type="button" id="rechazar" class="btn btn-secondary" onclick="myfunction()";>Rechazar </button>
+                                            <button type="submit" id="prueba_1"class="btn btn-primary" onclick="myfunction3()">Aceptar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="miModal4" class="modal">
+                                <div class="flex" id="flex">
+                                    <div class="contenido-modal">
+                                        <div class="modal-body" align="center">  
+                                            <span class="close" id="close4" onclick="cerrar_final()";>&times;</span>
+                                            <br>
+                                            <h4>Registro exitoso</h4>
+                                            <br>
+                                            <img src="./img/affection.png"width="150px" height="150px">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
                         
                         
                         
@@ -262,41 +297,7 @@
                 </div>
             </div>
 
-            <div id="miModal" class="modal">
-                <div class="flex" id="flex">
-                    <div class="contenido-modal">
-                        <div class="modal-body" align="center">
-                            <span class="close" id="close">&times;</span>
-                            <br>
-                            <br>
-                            <h4>¿Está seguro de que</h4>
-                            <h4>desea registrar</h4>
-                            <h4>el objeto?</h4>
-                            <br>
-                            <br>
-                            <button type="button" id="rechazar" class="btn btn-secondary" onclick="myfunction()";>Rechazar </button>
-                            <button type="submit" id="prueba_1"class="btn btn-primary" onclick="myfunction3()">Aceptar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="miModal4" class="modal">
-                <div class="flex" id="flex">
-                    <div class="contenido-modal">
-                        <div class="modal-body" align="center">  
-                            <span class="close" id="close4" onclick="cerrar_final()";>&times;</span>
-                            <br>
-                            <h4>Registro exitoso</h4>
-                            <br>
-                            <img src="./img/affection.png"width="150px" height="150px">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
+           
     <!-- Product Shop Section End -->
 
 

@@ -111,7 +111,8 @@ def objeto_agregar():
       ]
     }
     
-    return  json.dumps(rpta),status
+    #return  json.dumps(rpta),status
+    return redirect('/register')
 
     '''
 INSERT INTO OBJETO(cod_objeto, id_usuario,nom_objeto, categoria, marca, estado, fecha_hallado,fecha_dev, lugar, nro_anaquel, caract_esp, cod_usu_entrega)
