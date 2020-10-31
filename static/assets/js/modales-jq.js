@@ -36,7 +36,7 @@ $(".objeto5").click(function(){
 });
 
 /*****************Modal para cierre de sesión*******************/
-/*$(".login-panel").click(function(){
+$("#registrar_1").click(function(){
     Swal.fire({
         title: '¿Está seguro de que desea cerrar sesión?',
         showCancelButton: true,
@@ -48,6 +48,5 @@ $(".objeto5").click(function(){
             window.location.href = "/logout";
         }
       })
-
-});*/
+});
 
