@@ -117,3 +117,59 @@ def objeto_agregar():
     '''
 INSERT INTO OBJETO(cod_objeto, id_usuario,nom_objeto, categoria, marca, estado, fecha_hallado,fecha_dev, lugar, nro_anaquel, caract_esp, cod_usu_entrega)
  VALUES(1, 5,'CARGADOR HUAWEI', 'TECNOLOGICO','HUAWEI', 'EN PROCESO', '10-04-2020', NULL, 'F', 1,'USB AZUL MARCA HUAWEI', NULL);'''
+
+
+@view.route('/objeto/filtro')
+def filtro_objeto():
+    resp = None
+    categoria = request.args.get('categoria') #BELLEZA
+    lugar = request.args.get('lugar')
+    status = 200
+    try:
+        conn = engine.connect()
+        stmt=''
+        if(categoria != 'undefined' and lugar == 'undefined'):
+            stmt = select([Objeto]).where(Objeto.categoria == categoria)
+        elif(lugar != 'undefined' and categoria == 'undefined'):
+            stmt = select([Objeto]).where(Objeto.lugar == lugar)
+        elif(categoria == 'TODOS' and lugar != 'undefined'):
+            stmt = select([Objeto]).where(Objeto.lugar == lugar)
+        elif(lugar == 'TODOS' and categoria != 'undefined'):
+            stmt = select([Objeto]).where(Objeto.categoria == categoria)
+        elif(lugar != 'undefined' and categoria != 'undefined'):
+            stmt =  (select([Objeto])
+                    .select_from(Objeto)
+                    .where((Objeto.categoria == categoria) &
+                    (Objeto.lugar == lugar)))
+        
+        rs = conn.execute(stmt)
+        lista = []
+        for r in conn.execute(stmt):
+            print(r.categoria)
+            row = {
+            'id': r.id,
+            'cod_objeto':r.cod_objeto,
+            'nom_objeto':r.nom_objeto,
+            'categoria':r.categoria,
+            'estado':r.estado,
+            'marca':r.marca,
+            'fecha_hallado':str(r.fecha_hallado),
+            'fecha_dev':str(r.fecha_dev),
+            'lugar':r.lugar,
+            'nro_anaquel':r.nro_anaquel,
+            'caract_esp':r.caract_esp,
+            'cod_usu_entrega':r.cod_usu_entrega
+            }
+            lista.append(row) 
+        resp=lista
+    except Exception as e:
+        resp = [
+            'Se ha producido un error en listar los objetos',
+            str(e)
+        ]
+        status = 500
+
+    return json.dumps(resp),status
+
+
+

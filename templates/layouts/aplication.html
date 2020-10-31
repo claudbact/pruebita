@@ -20,7 +20,7 @@
     
    
   </head>
-  <body onload="myFunction()">
+  <body onload="listarObjeto()">
     {% block css %}
     <link rel="stylesheet" href="assets/css/modal.css" type="text/css">
     {% endblock %}  
@@ -84,13 +84,13 @@
                                 {% else %}
                                 {% if (session['rol'] == 3) %} <!---->
                                 <li id="3"><a href="/inicio">OBJETOS</a></li>
-                                <li><a href="/register">REGISTRO OBJETOS</a></li>
+                                <li><a href="./registro.html">REGISTRO OBJETOS</a></li>
                                 <li><a href="./verificar_objeto.html">SOLICITUDES USUARIO</a></li>
                                 
                                 {% else %}
                                 {% if (session['rol'] == 4) %}
                                 <li id="4"><a href="/inicio">OBJETOS</a></li>
-                                <li><a href="/register">REGISTRO OBJETOS</a></li>
+                                <li><a href="./registro.html">REGISTRO OBJETOS</a></li>
                                 
                                 {% else %}
                                 <li id="5"><a href="/inicio">OBJETOS</a></li>
@@ -157,61 +157,71 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Categorías</h4>
-                        <ul class="filter-catagories">
-                            <li><a href="#">Académico</a></li>
-                            <li><a href="#">Documento</a></li>
-                            <li><a href="#">Personal</a></li>
-                            <li><a href="#">Tecnológico</a></li>
-                        </ul>
-                    </div>
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Lugar</h4>
-                        <div class="fw-brand-check">
-                            <select name="Lugar">
-                                <option value="1">Todos</option>
-                                <option value="2">A</option>
-                                <option value="3">B</option>
-                                <option value="4">C</option>
-                                <option value="5">CH</option>
-                                <option value="6">D</option>
-                                <option value="7">E</option>
-                                <option value="8">F</option>
-                                <option value="9">G</option>
-                                <option value="10">H</option>
-                                <option value="11">LL</option>
-                                <option value="12">M</option>
-                                <option value="13">N</option>
-                                <option value="14">O</option>
-                                <option value="15">PARQUE CENTRAL</option>
-                                <option value="16">Q</option>
-                                <option value="17">R</option>
-                                <option value="18">S</option>
-                                <option value="19">TA</option>
-                                <option value="20">TB</option>
-                                <option value="21">V</option>
-                                <option value="22">W</option>
-                                <option value="23">ZUM</option>
-                            </select>
+                    <form action="/objeto/filtro" method="GET">
+                        <div class="filter-widget">
+                            <h4 class="fw-title">Categorías</h4>
+                            <div class="fw-brand-check">
+                                <select id="categoria">
+                                    <option value='NADA' disabled selected>---------------------</option>
+                                    <option value="ACADEMICO">Académico</option>
+                                    <option value="ACCESORIOS">Accesorios</option>
+                                    <option value="BELLEZA">Belleza</option>
+                                    <option value="DOCUMENTACION">Documentación</option>
+                                    <option value="EQUIPAJE">Equipaje</option>
+                                    <option value="JOYERIA">Joyería</option>
+                                    <option value="PAPELERIA">Papelería</option>
+                                    <option value="PRENDA">Prenda</option>
+                                    <option value="SALUD">Salud</option>
+                                    <option value="TECNOLOGICO">Tecnológico</option>
+                                    <option value="TODOS">Todas</option>
+                                    <option value="OTROS">Otros</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Fecha</h4>
-
-                        <label for="start">Fecha Inicio:&nbsp&nbsp</label>
-                        <input type="date" id="start" name="trip-start"
-                            value="2020-07-22"
-                            min="2020-01-01" max="2020-12-31">
-
-                        <label for="start">Fecha Fin:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-                        <input type="date" id="start" name="trip-start"
-                            value="2020-07-22"
-                            min="2020-01-01" max="2020-12-31">
-                        <br><br><br>
-                        <a href="#" class="filter-btn">Buscar</a>
-                    </div>
-                 
+                        <div class="filter-widget">
+                            <h4 class="fw-title">Lugar</h4>
+                            <div class="fw-brand-check">
+                                <select id="lugar">
+                                    <option value='NADA' disabled selected>---------------------</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="CH">CH</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="G">G</option>
+                                    <option value="H">H</option>
+                                    <option value="LL">LL</option>
+                                    <option value="M">M</option>
+                                    <option value="N">N</option>
+                                    <option value="O">O</option>
+                                    <option value="PARQUE CENTRAL">Parque Central</option>
+                                    <option value="Q">Q</option>
+                                    <option value="R">R</option>
+                                    <option value="S">S</option>
+                                    <option value="TA">TA</option>
+                                    <option value="TB">TB</option>
+                                    <option value="TODOS">Todos</option>
+                                    <option value="V">V</option>
+                                    <option value="W">W</option>
+                                    <option value="ZUM">ZUM</option>
+                                </select>
+                            </div>
+                        </div>
+                    
+                        <div class="filter-widget">
+                            <h4 class="fw-title">Fecha</h4>
+                    
+                            <label for="start">Fecha Inicio:&nbsp&nbsp</label>
+                            <input type="date" id="start" name="trip-start" value="fechaInicio" min="2020-01-01" max="2020-12-31">
+                    
+                            <label for="start">Fecha Fin:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+                            <input type="date" id="start" name="trip-start" value="fechaFin" min="2020-01-01" max="2020-12-31">
+                            <br><br><br>
+                            <button id="buscarFiltro" type="button" class="filter-btn" onclick="filtrarObjeto(event);">Buscar</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="col-lg-9 order-1 order-lg-2">
                     <div class="product-show-option">
@@ -235,7 +245,7 @@
                                         
                         </div>
                         {% else %}
-                        {% if (session['rol'] == 2 or session['rol'] == 3 or session['rol'] == 4 ) %} 
+                        {% if (session['rol'] == 2 or session['rol'] == 3 or session['rol'] == 4) %} 
                         <div class="row" id="items2"></div>
                                         
                                         
@@ -286,19 +296,24 @@
                         
                         {% else %}
                         {% if (session['rol'] == 5) %} 
-                        <div class="row" id="items2"></div>
+                        <div class="row" id="items"></div>
                                         
                                         
                         </div>
                         
                         {% else %}
-                       
+                        {% if (session['rol'] == 4) %}
+                        <div class="row" id="items2"></div>
+                                        
+                                        
+                        </div>
+                        {% else %}
                         <div class="row" id="items2"></div>
                                         
                                         
                         </div>
                         
-                       
+                        {% endif %}
                         {% endif %}
                         {% endif %}
                         {% endif %}
@@ -315,46 +330,7 @@
             </div>
         </div>
     </section>
-    
-       <!-- <div class="container-prueba">
-            <div class="section-prueba">
-                <button onclick="myFunction()">Copy Text</button>
-                <table class="table"> 
-                    <thead>
-                        <tr>
-                            <th>Objeto</th>
-                            <th>Categoria</th>
-
-                        </tr>
-                    </thead>
-                    <!--<tbody id="prueba-cuerpo">
-
-
-                    </tbody>
-
-                </table>
-
-
-
-            </div>
-
-
-
-
-        </div>-->
-
-
-        <!--<button onclick="myFunction()">Copy Text</button>-->
-
-        
-      
-
-       
-
-
-
-
-    
+  
     <footer class="footer-section">
         <div class="container">
             <div class="row">
@@ -428,86 +404,28 @@
     <script>
         console.log("se conecto aaaa");
     
-        function myFunction()
-    {
-        console.log("Dentro de la funcion");
-        const xhttp = new XMLHttpRequest();
-        xhttp.open('GET','/objeto/list',true)
-        xhttp.send();
-        xhttp.onreadystatechange=function()
+        var estado=0;
+
+        function myFunction(datos)
         {
-            if(this.readyState==4&&this.status==200)
-            {
-                //console.log(this.responseText);
-    
-                let datos=JSON.parse(this.responseText)
-               
-               
-                //let res=document.querySelector('#prueba-cuerpo')
-               
-                //console.log(datos)
-                /*
-                for (let item of datos)
-                {
-                    
-                    res.innerHTML+= `
-                    <tr>
-                        <td>${item.nom_objeto}</td>	
-                        <td>${item.categoria}</td>	
-                    </tr>`
-    
-                    
-                }*/
-                /*for (let item of datos)
-                {
-                    
-                   
-                    res.innerHTML+= `
-                    <div class="col-lg-4 col-sm-6">
-                            <div class="product-item">
-                                <div class="pi-pic" style="height: 3em;">
-                                    <img src="/static/assets/img/products/descarga (3).png" alt="">
-                                    <div class="icon">
-                                        <br>
-                                    </div>
-                                    <ul>
-                                        <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                        <li class="quick-view"><a class="obj2" id="obj23">+ Solicitar</a></li> <!--agregado-->
-                                        <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="pi-text">
-                                    <div class="catagory-name">${item.categoria}</div>
-                                    <a href="#">
-                                        <h5>${item.nom_objeto}</h5>
-                                        <p>Pabellon ${item.lugar}</p>
-                                        <p>${item.fecha_hallado}</p>
-                                        
-                                    </a>
-                                    <div class="product-price">
-                                        
-                            
-                                        <h6> </h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                   
-                
-                    `
-    
-                    
-                }*/
                 var variable= document.getElementById("lista");
                 var ventana=document.getElementById('miModal');
                 var a= variable.childNodes[1].id;
                 console.log(a);
+
+                if(datos.length >= 0)
+                {
+                    console.log('mayor que ceroooo')
+                }
+                else{
+                    console.log('nofin')
+                }
+
                 if(a=="items")
                 {
-                    
+                    estado=0;
                     for (let item of datos)
-                    {
-                        
+                    { 
                        
                         let miNodo = document.createElement('div');
                         
@@ -520,7 +438,6 @@
                         
                         let miNodoTitle = document.createElement('h5');
                         miNodoTitle.classList.add('card-title');
-                       
                         miNodoTitle.textContent = item.nom_objeto;
                         
                     
@@ -530,7 +447,11 @@
 
                         let miNodolugar= document.createElement('p');
                         miNodolugar.classList.add('card-text');
-                        miNodolugar.textContent = "Pabellón "+item.lugar;
+                        if((String(item.lugar) != 'PARQUE CENTRAL') && (String(item.lugar) != 'ZUM')){
+                            miNodolugar.textContent = "Pabellón "+String(item.lugar);
+                        } else{
+                            miNodolugar.textContent = String(item.lugar);
+                        }
                         
                         let miNodofecha= document.createElement('p');
                         miNodofecha.classList.add('card-text');
@@ -539,10 +460,7 @@
                         let miNodoBoton = document.createElement('button');
                         miNodoBoton.classList.add('btn', 'btn-success');
                         miNodoBoton.textContent = 'SOLICITAR';
-                        
-                        //miNodoBoton.addEventListener('click',modal);
-                        // Insertamos
-                    
+
                         miNodoCardBody.appendChild(miNodoTitle);
                         miNodoCardBody.appendChild(miNodoCategoria);
                         miNodoCardBody.appendChild(miNodolugar);
@@ -551,18 +469,15 @@
                         miNodo.appendChild(miNodoCardBody);
 
                         document.getElementById("items").appendChild(miNodo);
-                        
-                    
-        
-                        
+                
                     }
                 }
 
                 else
-                {
-                    
+                {    
                     if(a=="items2")
                     {
+                            estado=1;
                         
                             for (let item of datos)
                             {
@@ -587,7 +502,11 @@
 
                                 let miNodolugar= document.createElement('p');
                                 miNodolugar.classList.add('card-text');
-                                miNodolugar.textContent = "Pabellón"+item.lugar;
+                                if((String(item.lugar) != 'PARQUE CENTRAL') && (String(item.lugar) != 'ZUM')){
+                                    miNodolugar.textContent = "Pabellón "+String(item.lugar);
+                                } else{
+                                miNodolugar.textContent = String(item.lugar);
+                                }
 
                                 let miNodofecha= document.createElement('p');
                                 miNodofecha.classList.add('card-text');
@@ -595,7 +514,7 @@
                             
                                 let miNodoBoton = document.createElement('button');
                                 miNodoBoton.classList.add('btn', 'btn-primary');
-                                miNodoBoton.textContent = '+ VER MAS';
+                                miNodoBoton.textContent = '+ VER MÁS';
                                 
                                 //miNodoBoton.addEventListener('click',modal);
 
@@ -629,15 +548,13 @@
                                 
                                 
                                 document.getElementById("items2").appendChild(miNodo);
-                                
-                                
+   
                             }
                             //var ventana=document.getElementById('miModal');
                             var cerrar=document.getElementById('close');
                             
                             function modal()
-                            {
-                                
+                            {     
                                 ventana.style.display="block";
                             }
                             
@@ -647,26 +564,101 @@
  
                     }
                 }
-                
-                
-                
-                
-             
-                
-               
-                
-            }
 
-            
         }
+
+    function limpiarBody(){
+        var div = document.getElementById("items");
+        var div2 = document.getElementById("items2");
+        if(estado==0){
+            while(div.firstChild){
+            div.removeChild(div.firstChild);
+            }
+        } else{
+            while(div2.firstChild){
+            div2.removeChild(div2.firstChild);
+            }
+        }
+        }
+
+    function listarObjeto(){
+        const xhttp = new XMLHttpRequest();
+        xhttp.open('GET','/objeto/list',true);    
+        xhttp.onreadystatechange=function(){
+        if(xhttp.readyState == 4){
+            switch(xhttp.status){
+                case 200:
+                    myFunction(JSON.parse(xhttp.responseText));
+                    break;
+            }
+        }
+       }
+       xhttp.send();
+    }
+
+    var selec1 = document.getElementById("categoria");
+    var categoriaSelec;
+
+    selec1.addEventListener("change", function(){
+        categoriaSelec = selec1.value;
+        return categoriaSelec;
+        }
+    )
+
+    var selec2 = document.getElementById("lugar");
+    var lugarSelec;
+    selec2.addEventListener("change", function(){
+        lugarSelec = selec2.value;
+        return lugarSelec;
+        }
+    )
+/*
+        if(state == 0){
+        const button = document.getElementById("buscarFiltro");
+        button.disabled = true;
+        } else{
+            button.disabled = false;
+        }*/
+
+
+    function filtrarObjeto(e){
+        limpiarBody();
+        console.log(categoriaSelec);
+        console.log(lugarSelec);
+
+        if  (lugarSelec == undefined && categoriaSelec == undefined){
+            alert("Debes escoger al menos una opción.")
+        } else if(  (categoriaSelec=='TODOS' && lugarSelec == undefined)    || 
+                    (lugarSelec == 'TODOS' && categoriaSelec == undefined)  ||
+                    (lugarSelec == 'TODOS' && categoriaSelec == 'TODOS') ) {
+                    listarObjeto();
+            } else {
+                const xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange=function(){};
+                xhttp.open('GET','/objeto/filtro?categoria='+categoriaSelec+'&lugar='+lugarSelec,true);
+                xhttp.onreadystatechange=function(){
+                    if(xhttp.readyState == 4){
+                        switch(xhttp.status){
+                            case 200:
+                                myFunction(JSON.parse(xhttp.responseText));
+                                break;
+                        }
+                    }
+                }
+                xhttp.send();
+            }
     }
     
-    
-    
+    </script>
+
+    <script>
+
     </script>
     <script src="/assets/js/modales-jq.js"></script>
     <script src="/assets/plugins/sweetalert2.all.min.js"></script>
     <script src="/assets/plugins/sweetalert2.all.min.js"></script>
+    <!--<script src="../../static/assets/js/agregar_prueba.js" ></script>-->
+    
 
 </body>
 
