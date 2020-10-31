@@ -157,72 +157,74 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-8 order-2 order-lg-1 produts-sidebar-filter">
+                    <form action="/objeto/filtrar" method="post">
+                    
                     <div class="filter-widget">
-                        <h4 class="fw-title">Categorías</h4>
-                        <ul class="filter-catagories">
-                            <li><a href="#">Académico</a></li>
-                            <li><a href="#">Documento</a></li>
-                            <li><a href="#">Personal</a></li>
-                            <li><a href="#">Tecnológico</a></li>
-                        </ul>
-                    </div>
-                    <div class="filter-widget">
-                        <h4 class="fw-title">Lugar</h4>
+                       
+                        <h4 class="fw-title">Categoría</h4>
                         <div class="fw-brand-check">
-                            <select name="Lugar">
-                                <option value="1">Todos</option>
-                                <option value="2">A</option>
-                                <option value="3">B</option>
-                                <option value="4">C</option>
-                                <option value="5">CH</option>
-                                <option value="6">D</option>
-                                <option value="7">E</option>
-                                <option value="8">F</option>
-                                <option value="9">G</option>
-                                <option value="10">H</option>
-                                <option value="11">LL</option>
-                                <option value="12">M</option>
-                                <option value="13">N</option>
-                                <option value="14">O</option>
-                                <option value="15">PARQUE CENTRAL</option>
-                                <option value="16">Q</option>
-                                <option value="17">R</option>
-                                <option value="18">S</option>
-                                <option value="19">TA</option>
-                                <option value="20">TB</option>
-                                <option value="21">V</option>
-                                <option value="22">W</option>
-                                <option value="23">ZUM</option>
+                            <select name="categoria">
+                                <option value="ACADÉMICO">Académico</option>
+                                <option value="DOCUMENTO">Documento</option>
+                                <option value="PERSONAL">Personal</option>
+                                <option value="TECNOLÓGICO">Tecnológico</option>
                             </select>
                         </div>
+                       
                     </div>
                     <div class="filter-widget">
+                    <h4 class="fw-title">Lugar</h4>
+                    <span>
+                        <select name="lugar">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="CH">CH</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="G">G</option>
+                            <option value="H">H</option>
+                            <option value="LL">LL</option>
+                            <option value="M">M</option>
+                            <option value="N">N</option>
+                            <option value="O">O</option>
+                            <option value="PARQUE CENTRAL">PARQUE CENTRAL</option>
+                            <option value="Q">Q</option>
+                            <option value="R">R</option>
+                            <option value="S">S</option>
+                            <option value="TA">TA</option>
+                            <option value="TB">TB</option>
+                            <option value="V">V</option>
+                            <option value="W">W</option>
+                            <option value="ZUM">ZUM</option>
+                        </select>
+                    </span>
+                    </div>
                         <h4 class="fw-title">Fecha</h4>
 
-                        <label for="start">Fecha Inicio:&nbsp&nbsp</label>
-                        <input type="date" id="start" name="trip-start"
-                            value="2020-07-22"
-                            min="2020-01-01" max="2020-12-31">
-
-                        <label for="start">Fecha Fin:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-                        <input type="date" id="start" name="trip-start"
-                            value="2020-07-22"
-                            min="2020-01-01" max="2020-12-31">
+                       
+                        <li><span><input type="date" name="trip-inicio"></li></span></li>
+                        <br>
+                      
+                        <li><span><input type="date" name="trip-fin"></li></span></li>
                         <br><br><br>
-                        <a href="#" class="filter-btn">Buscar</a>
-                    </div>
+                        <button type="submit">BUSCAR</button>
+               
+
+                </form>
                  
                 </div>
                 <div class="col-lg-9 order-1 order-lg-2">
                     <div class="product-show-option">
                         <div class="row">
                             <div class="col-lg-7 col-md-7">
-                               <div class="advanced-search">
-                                    <form action="#" class="input-group">
-                                        <input type="text" placeholder="¿Qué estás buscando?">
-                                        <button type="button"><i class="ti-search"></i></button>
+                             
+                                    <form action="#" method="post" class="input-group">
+                                        <input type="text" name="nam_objeto"  placeholder="¿Qué estás buscando?">
+                                        <button type="submit"></button>
                                     </form>
-                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -498,10 +500,16 @@
     
                     
                 }*/
+
+                
                 var variable= document.getElementById("lista");
+               
                 var ventana=document.getElementById('miModal');
                 var a= variable.childNodes[1].id;
-                console.log(a);
+
+
+                
+                
                 if(a=="items")
                 {
                     
@@ -514,11 +522,13 @@
                         miNodo.className='col-lg-4 col-sm-6';
                         miNodo.classList.add('card');
                         
+                        
                     
                         let miNodoCardBody = document.createElement('div');
                         miNodoCardBody.classList.add('card-body');
                         
                         let miNodoTitle = document.createElement('h5');
+                        
                         miNodoTitle.classList.add('card-title');
                        
                         miNodoTitle.textContent = item.nom_objeto;
@@ -551,12 +561,14 @@
                         miNodo.appendChild(miNodoCardBody);
 
                         document.getElementById("items").appendChild(miNodo);
+                       
                         
                     
         
                         
                     }
                 }
+                
 
                 else
                 {
@@ -648,7 +660,8 @@
                     }
                 }
                 
-                
+               
+               
                 
                 
              
