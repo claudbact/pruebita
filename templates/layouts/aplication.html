@@ -17,8 +17,6 @@
     <link rel="stylesheet" href="/assets/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
     <link rel="stylesheet" href="/assets/plugins/sweetalert2.min.css" type="text/css">
-    
-   
   </head>
   <body onload="listarObjeto()">
     {% block css %}
@@ -111,13 +109,12 @@
                 </div>
             </header>
         </div>
-    </div>
+    </div><!--
     <div class="container text-center">
              
         
         <br>
         <br>
-        
         <div class="modal" id="myModal1">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -151,7 +148,7 @@
                             });
         </script>
         
-      </div>
+      </div>-->
 
     <section class="product-shop spad">
         <div class="container">
@@ -219,7 +216,7 @@
                             <label for="start">Fecha Fin:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
                             <input type="date" id="start" name="trip-start" value="fechaFin" min="2020-01-01" max="2020-12-31">
                             <br><br><br>
-                            <button id="buscarFiltro" type="button" class="filter-btn" onclick="filtrarObjeto(event);">Buscar</button>
+                            <button id="buscarFiltro" type="button" class="filter-btn" onclick="Validate();">Buscar</button>
                         </div>
                     </form>
                 </div>
@@ -435,11 +432,10 @@
                     
                         let miNodoCardBody = document.createElement('div');
                         miNodoCardBody.classList.add('card-body');
-                        
+        
                         let miNodoTitle = document.createElement('h5');
                         miNodoTitle.classList.add('card-title');
-                        miNodoTitle.textContent = item.nom_objeto;
-                        
+                        miNodoTitle.textContent = item.nom_objeto;     
                     
                         let miNodoCategoria= document.createElement('p');
                         miNodoCategoria.classList.add('card-text');
@@ -620,18 +616,29 @@
             button.disabled = false;
         }*/
 
+    function Validate() {
+        if  (lugarSelec == undefined && categoriaSelec == undefined){
+            //If the "Please Select" option is selected display error.
+            Swal.fire({
+                title: 'Debes seleccionar al menos un filtro.',
+                confirmButtonColor: '#e77b3c',
+                confirmButtonText: 'OK'
+            });
+            return false;
+        }
+        filtrarObjeto(event);
+    }
+
 
     function filtrarObjeto(e){
         limpiarBody();
         console.log(categoriaSelec);
         console.log(lugarSelec);
 
-        if  (lugarSelec == undefined && categoriaSelec == undefined){
-            alert("Debes escoger al menos una opción.")
-        } else if(  (categoriaSelec=='TODOS' && lugarSelec == undefined)    || 
-                    (lugarSelec == 'TODOS' && categoriaSelec == undefined)  ||
-                    (lugarSelec == 'TODOS' && categoriaSelec == 'TODOS') ) {
-                    listarObjeto();
+        if( (categoriaSelec=='TODOS' && lugarSelec == undefined)    || 
+            (lugarSelec == 'TODOS' && categoriaSelec == undefined)  ||
+            (lugarSelec == 'TODOS' && categoriaSelec == 'TODOS') ) {
+            listarObjeto();
             } else {
                 const xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange=function(){};
@@ -647,18 +654,28 @@
                 }
                 xhttp.send();
             }
-    }
-    
-    </script>
 
+    } 
+    </script>
+        
     <script>
-
+        $("#registrar_1").click(function () {
+            Swal.fire({
+                title: '¿Está seguro de que desea cerrar sesión?',
+                showCancelButton: true,
+                confirmButtonColor: '#e77b3c',
+                cancelButtonColor: 'grey',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "/logout";
+                }
+            })
+        });
     </script>
-    <script src="/assets/js/modales-jq.js"></script>
-    <script src="/assets/plugins/sweetalert2.all.min.js"></script>
-    <script src="/assets/plugins/sweetalert2.all.min.js"></script>
-    <!--<script src="../../static/assets/js/agregar_prueba.js" ></script>-->
-    
+
+    <script type="text/javascript" src="../../assets/js/modales-jq.js"></script>
+    <script type="text/javascript" src="../../assets/plugins/sweetalert2.all.min.js"></script>
 
 </body>
 
