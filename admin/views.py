@@ -6,7 +6,8 @@ from flask import Blueprint, render_template, session, request, redirect
 from main.models import Country,Objeto
 from main.database import engine,session_db
 from sqlalchemy import select,insert
-from datetime import datetime
+from datetime import date,datetime,timedelta
+
 
 #objeto que tiene la subaplicacion
 view = Blueprint('admin_bludprint', __name__)
@@ -118,34 +119,25 @@ def objeto_agregar():
 INSERT INTO OBJETO(cod_objeto, id_usuario,nom_objeto, categoria, marca, estado, fecha_hallado,fecha_dev, lugar, nro_anaquel, caract_esp, cod_usu_entrega)
  VALUES(1, 5,'CARGADOR HUAWEI', 'TECNOLOGICO','HUAWEI', 'EN PROCESO', '10-04-2020', NULL, 'F', 1,'USB AZUL MARCA HUAWEI', NULL);'''
 
-
-@view.route('/objeto/filtro')
-def filtro_objeto():
+@view.route('/objeto/filtrar', methods=['GET','POST'])
+def buscar():
+    print("aaaaaa")
+    lugar=str(request.form['lugar'])
+    categoria=str(request.form['categoria'])
+    fecha_inicio=request.form['trip-inicio']
+    print(fecha_inicio)
+    fecha_fin=request.form['trip-fin']
+    #dt_object1 =datetime.strptime(fecha_inicio, '%Y-%m-%d')
+    #dt_object2 =datetime.strptime(fecha_fin, '%Y-%m-%d')
     resp = None
-    categoria = request.args.get('categoria') #BELLEZA
-    lugar = request.args.get('lugar')
     status = 200
     try:
         conn = engine.connect()
-        stmt=''
-        if(categoria != 'undefined' and lugar == 'undefined'):
-            stmt = select([Objeto]).where(Objeto.categoria == categoria)
-        elif(lugar != 'undefined' and categoria == 'undefined'):
-            stmt = select([Objeto]).where(Objeto.lugar == lugar)
-        elif(categoria == 'TODOS' and lugar != 'undefined'):
-            stmt = select([Objeto]).where(Objeto.lugar == lugar)
-        elif(lugar == 'TODOS' and categoria != 'undefined'):
-            stmt = select([Objeto]).where(Objeto.categoria == categoria)
-        elif(lugar != 'undefined' and categoria != 'undefined'):
-            stmt =  (select([Objeto])
-                    .select_from(Objeto)
-                    .where((Objeto.categoria == categoria) &
-                    (Objeto.lugar == lugar)))
-        
+        stmt = select([Objeto])
         rs = conn.execute(stmt)
         lista = []
         for r in conn.execute(stmt):
-            print(r.categoria)
+            print(fecha_inicio)
             row = {
             'id': r.id,
             'cod_objeto':r.cod_objeto,
@@ -160,16 +152,35 @@ def filtro_objeto():
             'caract_esp':r.caract_esp,
             'cod_usu_entrega':r.cod_usu_entrega
             }
-            lista.append(row) 
-        resp=lista
+            if r.categoria==categoria or r.lugar==lugar:
+                lista.append(row) 
+       
+        rpta=lista
     except Exception as e:
-        resp = [
-            'Se ha producido un error en listar los objetos',
+        rpta = [
+            'Se ha producido un error en listar los paises',
             str(e)
         ]
         status = 500
+     
 
-    return json.dumps(resp),status
+    return json.dumps(rpta),status
 
 
+ 
 
+
+'''def generar_rango_fechas(fecha_1, fecha_2,fecha_3):
+    fechas = []
+    dias = (fecha_2 - fecha_1).days + 1
+
+    for i in range(0,len(dias)):
+        fechas.append(fecha_1 + timedelta(dias[i]))
+    
+    for r in range(0,len(fechas)):
+        if fechas[r]==fecha_3:
+            return True
+    return False'''
+
+
+    

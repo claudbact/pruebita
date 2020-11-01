@@ -51,7 +51,7 @@ Migraciones con DBMATE - app:
     $ dbmate -d "db/migrations" -e "DB" rollback
 
 ---
-
+# pip install numpy
 Fuentes:
 
 + https://github.com/pepeul1191/flask-boilerplate-v3
